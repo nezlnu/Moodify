@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <title>Moodify</title>
+</head>
+
+
+
+<body>
+
+  <!-- navigācijas pogas -->
+
+  <header>
+
+    <nav>
+      
+      
+      <a href="library.html" title="Library" class="nav-item">
+          <i class="fa-solid fa-music"></i>
+          <span class="tooltip">Library</span>
+      </a>
+
+
+      <a href="index.html" title="Home" class="nav-item">
+          <i class="fa-solid fa-house"></i>
+          <span class="tooltip">Home</span>
+      </a>
+
+
+      <a href="profile.html" title="Profile" class="nav-item">
+          <i class="fa-solid fa-user"></i>
+          <span class="tooltip">Profile</span>
+      </a>
+    </nav>
+
+  </header>
+
+
+  
+  <!-- Reģistrācija un ieiešana kontā -->
+
+  <div id="user_enter">{% if user.is_authenticated %}<a href="profile.html">{{ user.username }}</a><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form>{% else %}<button id="reg_btn" onclick="location.href='register.html'">Register</button><button id="log_btn" onclick="location.href='login.html'">Login</button>{% endif %}</div>
+
+  <main><p id="historyStatus" role="status"></p><div hidden>{% csrf_token %}</div>
+
+    <!-- Pop-up, lai izvēlētos garastāvokli -->
+
+    <div class="mood-overlay" id="moodPopup">
+      <div class="mood-box">
+        <h1>How are you feeling?</h1>
+        <p>Choose a mood and we'll find something for you.</p>
+
+        <div class="moods">
+            <button data-mood="happy">😊 Happy</button>
+            <button data-mood="sad">😔 Sad</button>
+
+        </div>
+
+        <button class="close-button" id="closePopup">Maybe later</button>
+      </div>
+    </div>
+
+
+    <!-- Pop-up, lai izvēlētos aktivitāti -->
+
+
+    <div class="activity-overlay" id="activityPopup">
+      <div class="activity-box">
+        <h1>What are you doing?</h1>
+        <p>We'll find music that fits your activity.</p>
+
+        <div class="activities">
+            <button data-activity="studying">📚 Studying</button>
+            <button data-activity="working">💻 Working</button>
+            <button data-activity="exercising">🏃 Exercising</button>
+            <button data-activity="relaxing">🛋️ Relaxing</button>
+            <button data-activity="driving">🚗 Driving</button>
+            <button data-activity="partying">🎉 Partying</button>
+
+        </div>
+
+        <button class="back-button" id="backToMood">
+            ← Back
+        </button>
+      </div>
+    </div>
+
+
+
+    <!-- Pop-up, lai izvēlētos enerģijas līmeni 1-100 -->
+
+    <div class="energy-overlay" id="energyPopup">
+      <div class="energy-box">
+
+        <h1>What's your energy level?</h1>
+
+        <div class="energy-emojis">
+            <span>😑</span>
+            <span>🫤</span>
+            <span>😐</span>
+            <span>😊</span>
+            <span>😆</span>
+        </div>
+
+        <input
+            type="range"
+            id="energySlider"
+            min="0"
+            max="100"
+            value="50"
+        >
+
+        <div class="energy-number">
+            <span id="energyValue">50</span>
+        </div>
+
+        <button id="energyNext">Continue</button>
+
+      </div>
+    </div>
+
+    <div id="spotifyPopup">
+
+      <div class="popup-content">
+
+          <h2>Your Moodify Playlist 🎵</h2>
+
+          <p id="playlistMessage"></p>
+
+          <div id="spotifyContainer"></div>
+
+          <button id="anotherPlaylist">
+              🎲 Give me another
+          </button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    
+
+  </main>
+    
+</body>
+<script src="{% static 'app.js' %}"></script>
+
+
+
+
+
+
+</html>

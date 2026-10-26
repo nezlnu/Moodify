@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Moodify</title>
+
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        .history-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            color: #241638;
+        }
+
+        .history-container h1 {
+            margin-bottom: 10px;
+        }
+
+        .history-description {
+            margin-bottom: 25px;
+            color: #ccc;
+        }
+
+        .history-item {
+            background: #222;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        .history-item h3 {
+            margin-top: 0;
+        }
+
+        .history-item p {
+            margin: 8px 0;
+        }
+
+        .history-item a {
+            display: inline-block;
+            color: #1ed760;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .history-item a:hover {
+            text-decoration: underline;
+        }
+
+        .history-item iframe {
+            display: block;
+            width: 100%;
+            height: 152px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        #clearHistory {
+            background: #e74c3c;
+            color: #241638;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #clearHistory:hover {
+            background: #c0392b;
+        }
+
+        #emptyHistory {
+            background: #222;
+            padding: 25px;
+            border-radius: 12px;
+            color: #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav>
+            <a href="library.html" title="Library" class="nav-item">
+                <i class="fa-solid fa-music"></i>
+                <span class="tooltip">Library</span>
+            </a>
+
+            <a href="index.html" title="Home" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span class="tooltip">Home</span>
+            </a>
+
+
+            <a href="profile.html" title="Profile" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span class="tooltip">Profile</span>
+            </a>
+        </nav>
+    </header>
+
+
+    <!-- Register and Login -->
+
+    <div id="user_enter">{% if user.is_authenticated %}<a href="profile.html">{{ user.username }}</a><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form>{% else %}<button id="reg_btn" onclick="location.href='register.html'">Register</button><button id="log_btn" onclick="location.href='login.html'">Login</button>{% endif %}</div>
+
+
+    <!-- Listening History -->
+
+    <main class="history-container">
+
+        <h1><i class="fa-solid fa-clock-rotate-left"></i>
+            Listening History
+        </h1>
+
+        <p class="history-description">
+            Your recently opened Moodify playlists.
+        </p>
+
+        <button id="clearHistory" {% if not user.is_authenticated %}hidden{% endif %}>
+            <i class="fa-solid fa-trash"></i>
+            Clear history
+        </button>
+
+        <div hidden>{% csrf_token %}</div><div id="historyList"></div>
+
+    </main>
+
+
+    <!-- Listening History JavaScript -->
+
+    
+
+    <script src="{% static 'history.js' %}"></script>
+
+</body>
+</html>

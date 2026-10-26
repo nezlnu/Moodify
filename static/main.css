@@ -1,0 +1,414 @@
+body{
+    background-color: rgb(192, 182, 216);
+    margin: 0;
+    
+
+}
+
+header{
+    background-color: rgb(122, 118, 160);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height:70px;
+    padding: 5px;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    
+    
+}
+
+
+nav {
+    display: flex;
+    gap: 60px;
+    font-size: 24px;
+}
+
+
+nav a{
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    text-decoration: none;
+    color: rgb(9, 23, 85);
+}
+
+nav a:hover {
+    color: #80aae9;
+}
+
+
+
+.nav-item {
+    position: relative;
+    color: black;
+    text-decoration: none;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s ease;
+}
+
+.nav-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+}
+
+#settings_btn{
+    position: relative;
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    left: 40px;
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    text-decoration: none;
+    color: rgb(9, 23, 85);
+}
+
+
+
+.mood-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.mood-box {
+    background: rgb(241, 207, 215);
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.mood-box h1 {
+    margin-bottom: 10px;
+}
+
+.mood-box p {
+    margin-bottom: 25px;
+}
+
+.moods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.moods button {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.moods button:hover {
+    background: #ddd;
+    transform: scale(1.03);
+}
+
+.close-button {
+    margin-top: 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+}
+
+.activity-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.activity-box {
+    background: antiquewhite;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.activity-box h1 {
+    margin-bottom: 10px;
+}
+
+.activity-box p {
+    margin-bottom: 25px;
+}
+
+.activities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.activities button {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.activities button:hover {
+    background: #ddd;
+    transform: scale(1.03);
+}
+
+.back-button {
+    margin-top: 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+}
+
+
+.energy-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.energy-box {
+    background: antiquewhite;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.energy-box h1 {
+    margin-bottom: 10px;
+}
+
+.energy-box p {
+    margin-bottom: 25px;
+}
+
+.energy-emojis {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px 10px;
+    font-size: 28px;
+}
+
+#energySlider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #333;
+}
+
+.energy-number {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#energyNext {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#energyNext:hover {
+    background: #444;
+}
+
+
+#user_enter{
+    float: right;
+    padding-right: 40px;
+    padding-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+#reg_btn{
+    background-color: #6e5cd1;
+    color: aliceblue;
+    height: 40px;
+    width: 120px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #4837a7;
+    font-family: verdana;
+}
+
+#log_btn{
+    background-color: aliceblue;
+    color: #6e5cd1;
+    height: 40px;
+    width: 120px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #9890ca;
+    font-family: verdana;
+}
+
+
+#spotifyPopup {
+    display: none;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+#spotifyPopup .popup-content {
+    width: 100%;
+    box-sizing: border-box;
+    background: #dbd5dd;
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Virsraksts */
+
+#spotifyPopup h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #3a0747;
+    font-size: 28px;
+}
+
+/* Paziņojums, ja nav playlist */
+
+#playlistMessage {
+    color: #684c75;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+/* Spotify player */
+
+#spotifyContainer {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#spotifyContainer iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Atrast citu playlist poga */
+
+#anotherPlaylist {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#anotherPlaylist:hover {
+    background-color: #169c46;
+    transform: scale(1.03);
+}
+
+
+/* Close button */
+
+#closeSpotify {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body { font-family: 'Segoe UI', sans-serif; padding-bottom: 110px; }
+.auth-container { clear: both; max-width: 440px; margin: 0 auto; padding: 80px 24px 32px; color: #241638; }
+.auth-container h1 { font-size: 30px; }
+.auth-container form { background: #eee8f5; padding: 24px; border-radius: 18px; }
+.auth-container label { display: block; font-weight: 600; margin-bottom: 8px; }
+.auth-container input { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #9890ca; border-radius: 8px; font: inherit; }
+.auth-container button, #user_enter button { cursor: pointer; padding: 12px 18px; border-radius: 8px; border: 1px solid #4837a7; background: #6e5cd1; color: white; }
+.auth-container .helptext { display: block; font-size: 13px; margin-top: 6px; }
+.errorlist { color: #9c1630; padding-left: 20px; }
+a { color: #4837a7; }
+#user_enter { align-items: center; flex-wrap: wrap; }
+#user_enter form { margin: 0; }
+#historyStatus { clear: both; padding: 20px; }
+@media(max-width:600px) { nav { gap: 35px; } #user_enter { padding-right: 16px; } .auth-container { padding-top: 45px; } }

@@ -1,0 +1,20 @@
+# Paroles un slepenie iestatījumi
+.env
+.env.*
+!.env.example
+
+# Python virtuālā vide
+.venv/
+venv/
+env/
+
+# Python pagaidu faili
+__pycache__/
+*.pyc
+
+# Lokālā datubāze
+db.sqlite3
+
+# Redaktoru iestatījumi
+.idea/
+.vscode/
